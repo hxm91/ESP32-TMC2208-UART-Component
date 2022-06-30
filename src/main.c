@@ -20,7 +20,7 @@ void app_main(){
     static stepper_conf_t task1_conf = {
         .name = "Task 1",
         .speed = 1000,
-        
+        //串口初始化
         .stepper_driver_conf.direction_pin = GPIO_NUM_25,
         .stepper_driver_conf.step_pin = GPIO_NUM_26,
         .stepper_driver_conf.enable_pin = GPIO_NUM_27,
@@ -44,7 +44,7 @@ void app_main(){
     };
 
     ESP_LOGI(TAG, "Starting Task 1"); 
-    xTaskCreatePinnedToCore(&stepper_task, "Task 1", 4096, &task1_conf, 5, &pvTask1, 0);
+    xTaskCreatePinnedToCore(&stepper_task, "Task 1", 4096, &task1_conf, 5, &pvTask1, 0);//创建串口任务
 
 
     ESP_LOGI(TAG, "Starting Task 2"); 
